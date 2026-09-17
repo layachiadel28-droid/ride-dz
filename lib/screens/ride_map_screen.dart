@@ -6,30 +6,25 @@ class RideMapScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const initialCamera = CameraPosition(
-      target: LatLng(36.7538, 3.0588),
-      zoom: 12,
-    );
-
-    final markers = <Marker>{
-      const Marker(
-        markerId: MarkerId('pickup'),
-        position: LatLng(36.7538, 3.0588),
-        infoWindow: InfoWindow(title: 'نقطة الانطلاق'),
-      ),
-      const Marker(
-        markerId: MarkerId('dropoff'),
-        position: LatLng(36.7639, 3.0689),
-        infoWindow: InfoWindow(title: 'الوجهة'),
-      ),
-    };
-
     return Scaffold(
-      appBar: AppBar(title: const Text('تتبع الرحلة')),
+      appBar: AppBar(title: const Text('خريطة الرحلة')),
       body: GoogleMap(
-        initialCameraPosition: initialCamera,
-        markers: markers,
-        myLocationEnabled: true,
+        initialCameraPosition: const CameraPosition(
+          target: LatLng(36.7538, 3.0588),
+          zoom: 12,
+        ),
+        markers: const {
+          Marker(
+            markerId: MarkerId('pickup'),
+            position: LatLng(36.7538, 3.0588),
+            infoWindow: InfoWindow(title: 'نقطة الانطلاق'),
+          ),
+          Marker(
+            markerId: MarkerId('dropoff'),
+            position: LatLng(36.7639, 3.0689),
+            infoWindow: InfoWindow(title: 'الوجهة'),
+          ),
+        },
       ),
     );
   }
